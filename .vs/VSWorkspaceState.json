@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\InstructionDecoder"
   ],
-  "SelectedNode": "\\InstructionDecoder.sln",
+  "SelectedNode": "\\InstructionDecoder\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
