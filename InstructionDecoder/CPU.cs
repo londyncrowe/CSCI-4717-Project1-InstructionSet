@@ -78,7 +78,7 @@ namespace InstructionDecoder
                     strInstruction = Or(instruction);
                     break;
                 case 15:
-                    // Xor
+                    strInstruction = Xor(instruction);
                     break;
                 default:
                     break;
@@ -155,6 +155,8 @@ namespace InstructionDecoder
             return strRegister;
         }
 
+        #region Opcodes
+
         /// <summary>
         /// Translates the given increment instruction to a string. 
         /// </summary>
@@ -203,5 +205,24 @@ namespace InstructionDecoder
 
             return strInstruction;
         }
+
+        /// <summary>
+        /// Translates the given XOR instruction to a string. 
+        /// </summary>
+        /// <param name="instruction">16-bit instruction.</param>
+        /// <returns>String value of given XOR instruction.</returns>
+        private string Xor(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000") + "\t";
+            strInstruction += "0F\t";
+            strInstruction += "XOR\t";
+            strInstruction += getRegister(instruction, 4) + ",";
+            strInstruction += getRegister(instruction, 8) + ",";
+            strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
+        #endregion
     }
 }
