@@ -75,7 +75,7 @@ namespace InstructionDecoder
                     strInstruction = And(instruction);
                     break;
                 case 14:
-                    // Or
+                    strInstruction = Or(instruction);
                     break;
                 case 15:
                     // Xor
@@ -180,6 +180,23 @@ namespace InstructionDecoder
             string strInstruction = programCounter.ToString("0000") + "\t";
             strInstruction += "0D\t";
             strInstruction += "AND\t";
+            strInstruction += getRegister(instruction, 4) + ",";
+            strInstruction += getRegister(instruction, 8) + ",";
+            strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
+        /// <summary>
+        /// Translates the given OR instruction to a string.
+        /// </summary>
+        /// <param name="instruction">16-bit instruction.</param>
+        /// <returns>String value of given OR instruction.</returns>
+        private string Or(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000") + "\t";
+            strInstruction += "0E\t";
+            strInstruction += "OR\t";
             strInstruction += getRegister(instruction, 4) + ",";
             strInstruction += getRegister(instruction, 8) + ",";
             strInstruction += getRegister(instruction, 12);
