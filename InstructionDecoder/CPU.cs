@@ -96,61 +96,8 @@ namespace InstructionDecoder
         /// <returns></returns>
         private string getRegister(int instruction, int offset)
         {
-            string strRegister = string.Empty;
             int register = (instruction >> offset) & 15;
-            switch (register)
-            {
-                case 0:
-                    strRegister = "x0";
-                    break;
-                case 1:
-                    strRegister = "x1";
-                    break;
-                case 2:
-                    strRegister = "x2";
-                    break;
-                case 3:
-                    strRegister = "x3";
-                    break;
-                case 4:
-                    strRegister = "x4";
-                    break;
-                case 5:
-                    strRegister = "x5";
-                    break;
-                case 6:
-                    strRegister = "x6";
-                    break;
-                case 7:
-                    strRegister = "x7";
-                    break;
-                case 8:
-                    strRegister = "x8";
-                    break;
-                case 9:
-                    strRegister = "x9";
-                    break;
-                case 10:
-                    strRegister = "x10";
-                    break;
-                case 11:
-                    strRegister = "x11";
-                    break;
-                case 12:
-                    strRegister = "x12";
-                    break;
-                case 13:
-                    strRegister = "x13";
-                    break;
-                case 14:
-                    strRegister = "x14";
-                    break;
-                case 15:
-                    strRegister = "x15";
-                    break;
-                default:
-                    break;
-            }
+            string strRegister = "x" + register.ToString();
 
             return strRegister;
         }
