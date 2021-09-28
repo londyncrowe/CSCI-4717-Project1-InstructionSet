@@ -50,27 +50,27 @@ namespace InstructionDecoder
 
             foreach(string value in values)
             {
-                listBox1.Items.Add(value.Trim());
+                listBoxInputStream.Items.Add(value.Trim());
             }
         }
 
         private void button2_Click(object sender , EventArgs e)
         {
-            if (listBox1.Items.Count - 1 > 0)
+            if (listBoxInputStream.Items.Count - 1 > 0)
             {
-                if (listBox1.SelectedIndex == -1)
-                    listBox1.SelectedIndex = 0;
-                else if (listBox1.SelectedIndex < listBox1.Items.Count - 1)
-                    listBox1.SelectedIndex++;
-                string temp = listBox1.SelectedItem.ToString();
+                if (listBoxInputStream.SelectedIndex == -1)
+                    listBoxInputStream.SelectedIndex = 0;
+                else if (listBoxInputStream.SelectedIndex < listBoxInputStream.Items.Count - 1)
+                    listBoxInputStream.SelectedIndex++;
+                string temp = listBoxInputStream.SelectedItem.ToString();
                 int instruction = Int32.Parse(temp);
 
                 temp = cpu.DecodeInstruction(instruction);
                 string[] values = temp.Split('\t');
-                textBox1.Text = values[0];
-                textBox2.Text = values[1];
-                textBox3.Text = values[2];
-                textBox4.Text = values[3];
+                textBoxProgramCounter.Text = values[0];
+                textBoxHex.Text = values[1];
+                textBoxInstruction.Text = values[2];
+                textBoxRegisters.Text = values[3];
             }
         }
     }
