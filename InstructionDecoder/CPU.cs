@@ -61,7 +61,7 @@ namespace InstructionDecoder
                     strInstruction = Increment(instruction);
                     break;
                 case 9:
-                    // Dec
+                    strInstruction = Increment(instruction);
                     break;
                 case 10:
                     // Lsr
@@ -147,8 +147,8 @@ namespace InstructionDecoder
             string strInstruction = programCounter.ToString("0000") + "\t";
             strInstruction += "0E\t";
             strInstruction += "OR\t";
-            strInstruction += getRegister(instruction, 4) + ",";
-            strInstruction += getRegister(instruction, 8) + ",";
+            strInstruction += getRegister(instruction, 4) + ", ";
+            strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
 
             return strInstruction;
@@ -164,8 +164,8 @@ namespace InstructionDecoder
             string strInstruction = programCounter.ToString("0000") + "\t";
             strInstruction += "0F\t";
             strInstruction += "XOR\t";
-            strInstruction += getRegister(instruction, 4) + ",";
-            strInstruction += getRegister(instruction, 8) + ",";
+            strInstruction += getRegister(instruction, 4) + ", ";
+            strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
 
             return strInstruction;
@@ -173,12 +173,63 @@ namespace InstructionDecoder
 
         private string Add(int instruction)
         {
-            string strInstruction = programCounter.ToString("0000") + ",";
+            string strInstruction = programCounter.ToString("0000") + "\t";
             strInstruction += "03,";
             strInstruction += "ADD,";
-            strInstruction += getRegister(instruction, 4) + ",";
-            strInstruction += getRegister(instruction, 8) + ",";
+            strInstruction += getRegister(instruction, 4) + ", ";
+            strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
+        /// <summary>
+        /// Decoder for the decrement opcode
+        /// </summary>
+        /// <param name="instruction">The instruction.</param>
+        /// <returns>String of decoded information</returns>
+        private string Dec(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000" + "\t");
+            strInstruction += "09, ";
+            strInstruction += "DEC, ";
+            strInstruction += getRegister(instruction , 4);
+
+            return strInstruction;
+        }
+
+        private string Lsr(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000" + "\t");
+            strInstruction += "0A, ";
+            strInstruction += "LSR, ";
+            strInstruction += getRegister(instruction , 4);
+            strInstruction += getRegister(instruction , 8);
+            strInstruction += getRegister(instruction , 12);
+
+            return strInstruction;
+        }
+
+        private string Lsl(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000" + "\t");
+            strInstruction += "0B, ";
+            strInstruction += "LSL, ";
+            strInstruction += getRegister(instruction , 4);
+            strInstruction += getRegister(instruction , 8);
+            strInstruction += getRegister(instruction , 12);
+
+            return strInstruction;
+        }
+
+        private string Asr(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000" + "\t");
+            strInstruction += "0C, ";
+            strInstruction += "ASR, ";
+            strInstruction += getRegister(instruction , 4);
+            strInstruction += getRegister(instruction , 8);
+            strInstruction += getRegister(instruction , 12);
 
             return strInstruction;
         }
