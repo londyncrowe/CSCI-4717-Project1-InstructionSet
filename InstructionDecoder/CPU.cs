@@ -61,16 +61,16 @@ namespace InstructionDecoder
                     strInstruction = Increment(instruction);
                     break;
                 case 9:
-                    strInstruction = Increment(instruction);
+                    strInstruction = Dec(instruction);
                     break;
                 case 10:
-                    // Lsr
+                    strInstruction = Lsr(instruction);
                     break;
                 case 11:
-                    // Lsl
+                    strInstruction = Lsl(instruction);
                     break;
                 case 12:
-                    // Asr
+                    strInstruction = Asr(instruction);
                     break;
                 case 13:
                     strInstruction = And(instruction);
@@ -198,6 +198,11 @@ namespace InstructionDecoder
             return strInstruction;
         }
 
+        /// <summary>
+        /// Shift right instruction
+        /// </summary>
+        /// <param name="instruction">The instruction.</param>
+        /// <returns>string of opcode results</returns>
         private string Lsr(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
@@ -210,6 +215,11 @@ namespace InstructionDecoder
             return strInstruction;
         }
 
+        /// <summary>
+        /// Shift left opcode
+        /// </summary>
+        /// <param name="instruction">The instruction.</param>
+        /// <returns>string of results from instruction</returns>
         private string Lsl(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
@@ -222,6 +232,11 @@ namespace InstructionDecoder
             return strInstruction;
         }
 
+        /// <summary>
+        /// Arithmetic shift right
+        /// </summary>
+        /// <param name="instruction">The instruction.</param>
+        /// <returns>string of results from instruction</returns>
         private string Asr(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
