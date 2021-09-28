@@ -47,15 +47,18 @@ namespace InstructionDecoder
                     break;
                 case 4:
                     // Sub
+                    strInstruction = Sub(instruction);
                     break;
                 case 5:
                     // Jmp
                     break;
                 case 6:
                     // Je
+                    strInstruction = Je(instruction);
                     break;
                 case 7:
                     // Jne
+                    strInstruction = Jne(instruction);
                     break;
                 case 8:
                     strInstruction = Increment(instruction);
@@ -174,8 +177,8 @@ namespace InstructionDecoder
         private string Add(int instruction)
         {
             string strInstruction = programCounter.ToString("0000") + "\t";
-            strInstruction += "03,";
-            strInstruction += "ADD,";
+            strInstruction += "03\t";
+            strInstruction += "ADD\t";
             strInstruction += getRegister(instruction, 4) + ", ";
             strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
@@ -186,8 +189,8 @@ namespace InstructionDecoder
         private string Sub(int instruction)
         {
             string strInstruction = programCounter.ToString("0000") + "\t";
-            strInstruction += "04,";
-            strInstruction += "SUB,";
+            strInstruction += "04\t";
+            strInstruction += "SUB\t";
             strInstruction += getRegister(instruction, 4) + ", ";
             strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
@@ -198,8 +201,8 @@ namespace InstructionDecoder
         private string Je(int instruction)
         {
             string strInstruction = programCounter.ToString("0000") + "\t";
-            strInstruction += "06,";
-            strInstruction += "JE,";
+            strInstruction += "06\t";
+            strInstruction += "JE\t";
             strInstruction += getRegister(instruction, 4) + ", ";
             strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
@@ -210,8 +213,8 @@ namespace InstructionDecoder
         private string Jne(int instruction)
         {
             string strInstruction = programCounter.ToString("0000") + "\t";
-            strInstruction += "07,";
-            strInstruction += "JNE,";
+            strInstruction += "07\t";
+            strInstruction += "JNE\t";
             strInstruction += getRegister(instruction, 4) + ", ";
             strInstruction += getRegister(instruction, 8) + ", ";
             strInstruction += getRegister(instruction, 12);
@@ -227,8 +230,8 @@ namespace InstructionDecoder
         private string Dec(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
-            strInstruction += "09, ";
-            strInstruction += "DEC, ";
+            strInstruction += "09\t ";
+            strInstruction += "DEC\t ";
             strInstruction += getRegister(instruction , 4);
 
             return strInstruction;
@@ -242,8 +245,8 @@ namespace InstructionDecoder
         private string Lsr(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
-            strInstruction += "0A, ";
-            strInstruction += "LSR, ";
+            strInstruction += "0A\t ";
+            strInstruction += "LSR\t ";
             strInstruction += getRegister(instruction , 4);
             strInstruction += getRegister(instruction , 8);
             strInstruction += getRegister(instruction , 12);
@@ -259,8 +262,8 @@ namespace InstructionDecoder
         private string Lsl(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
-            strInstruction += "0B, ";
-            strInstruction += "LSL, ";
+            strInstruction += "0B\t ";
+            strInstruction += "LSL\t ";
             strInstruction += getRegister(instruction , 4);
             strInstruction += getRegister(instruction , 8);
             strInstruction += getRegister(instruction , 12);
@@ -276,8 +279,8 @@ namespace InstructionDecoder
         private string Asr(int instruction)
         {
             string strInstruction = programCounter.ToString("0000" + "\t");
-            strInstruction += "0C, ";
-            strInstruction += "ASR, ";
+            strInstruction += "0C\t ";
+            strInstruction += "ASR\t ";
             strInstruction += getRegister(instruction , 4);
             strInstruction += getRegister(instruction , 8);
             strInstruction += getRegister(instruction , 12);
