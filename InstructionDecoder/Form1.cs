@@ -14,6 +14,8 @@ namespace InstructionDecoder
 {
     public partial class Form1 : Form
     {
+
+        CPU cpu = new CPU();
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace InstructionDecoder
         private void button3_Click(object sender, EventArgs e)
         {
             string filePath = "";
+            string fileContent = "";
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.FilterIndex = 0;
             openFileDialog1.RestoreDirectory = true;
@@ -39,13 +42,36 @@ namespace InstructionDecoder
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 filePath = openFileDialog1.FileName;
-                
+
+                StreamReader sr = new StreamReader(filePath);
+                fileContent = sr.ReadToEnd();  
             }
-           
-            
+            string[] values = fileContent.Split('\n');
 
+            foreach(string value in values)
+            {
+                listBox1.Items.Add(value.Trim());
+            }
+        }
 
+        private void button2_Click(object sender , EventArgs e)
+        {
+            if (listBox1.Items.Count - 1 > 0)
+            {
+                if (listBox1.SelectedIndex == -1)
+                    listBox1.SelectedIndex = 0;
+                else if (listBox1.SelectedIndex < listBox1.Items.Count - 1)
+                    listBox1.SelectedIndex++;
+                string temp = listBox1.SelectedItem.ToString();
+                int instruction = Int32.Parse(temp);
 
+                temp = cpu.DecodeInstruction(instruction);
+                string[] values = temp.Split('\t');
+                textBox1.Text = values[0];
+                textBox2.Text = values[1];
+                textBox3.Text = values[2];
+                textBox4.Text = values[3];
+            }
         }
     }
 }
