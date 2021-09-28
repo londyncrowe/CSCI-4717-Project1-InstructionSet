@@ -74,6 +74,7 @@ namespace InstructionDecoder
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.InputFileButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -434,7 +435,7 @@ namespace InstructionDecoder
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(144, 563);
+            this.button1.Location = new System.Drawing.Point(358, 563);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(234, 58);
             this.button1.TabIndex = 9;
@@ -443,18 +444,29 @@ namespace InstructionDecoder
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(494, 563);
+            this.button2.Location = new System.Drawing.Point(654, 563);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(234, 58);
             this.button2.TabIndex = 9;
             this.button2.Text = "Decode Next";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // InputFileButton
+            // 
+            this.InputFileButton.Location = new System.Drawing.Point(60, 563);
+            this.InputFileButton.Name = "InputFileButton";
+            this.InputFileButton.Size = new System.Drawing.Size(234, 58);
+            this.InputFileButton.TabIndex = 9;
+            this.InputFileButton.Text = "Input File";
+            this.InputFileButton.UseVisualStyleBackColor = true;
+            this.InputFileButton.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1553, 1161);
+            this.Controls.Add(this.InputFileButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox22);
@@ -501,7 +513,6 @@ namespace InstructionDecoder
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -555,6 +566,7 @@ namespace InstructionDecoder
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button InputFileButton;
     }
 }
 

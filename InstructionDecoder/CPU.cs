@@ -43,6 +43,7 @@ namespace InstructionDecoder
                     break;
                 case 3:
                     // Add
+                    strInstruction = Add(instruction);
                     break;
                 case 4:
                     // Sub
@@ -163,6 +164,18 @@ namespace InstructionDecoder
             string strInstruction = programCounter.ToString("0000") + "\t";
             strInstruction += "0F\t";
             strInstruction += "XOR\t";
+            strInstruction += getRegister(instruction, 4) + ",";
+            strInstruction += getRegister(instruction, 8) + ",";
+            strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
+        private string Add(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000") + ",";
+            strInstruction += "03,";
+            strInstruction += "ADD,";
             strInstruction += getRegister(instruction, 4) + ",";
             strInstruction += getRegister(instruction, 8) + ",";
             strInstruction += getRegister(instruction, 12);
