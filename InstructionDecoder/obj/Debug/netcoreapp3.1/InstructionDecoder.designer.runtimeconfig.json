@@ -6,7 +6,7 @@
       "version": "3.1.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\rocky\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\hubba\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\rocky\\.nuget\\packages"
     ],
     "configProperties": {

@@ -183,6 +183,42 @@ namespace InstructionDecoder
             return strInstruction;
         }
 
+        private string Sub(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000") + "\t";
+            strInstruction += "04,";
+            strInstruction += "SUB,";
+            strInstruction += getRegister(instruction, 4) + ", ";
+            strInstruction += getRegister(instruction, 8) + ", ";
+            strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
+        private string Je(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000") + "\t";
+            strInstruction += "06,";
+            strInstruction += "JE,";
+            strInstruction += getRegister(instruction, 4) + ", ";
+            strInstruction += getRegister(instruction, 8) + ", ";
+            strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
+        private string Jne(int instruction)
+        {
+            string strInstruction = programCounter.ToString("0000") + "\t";
+            strInstruction += "07,";
+            strInstruction += "JNE,";
+            strInstruction += getRegister(instruction, 4) + ", ";
+            strInstruction += getRegister(instruction, 8) + ", ";
+            strInstruction += getRegister(instruction, 12);
+
+            return strInstruction;
+        }
+
         /// <summary>
         /// Decoder for the decrement opcode
         /// </summary>
